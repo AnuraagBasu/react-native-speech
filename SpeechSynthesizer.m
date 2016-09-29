@@ -1,8 +1,10 @@
 #import "SpeechSynthesizer.h"
 #import "RCTUtils.h"
 #import "RCTLog.h"
+#import "RCTEventDispatcher.h"
 
 @implementation SpeechSynthesizer
+@synthesize bridge = _bridge;
 
 RCT_EXPORT_MODULE()
 
@@ -114,38 +116,39 @@ RCT_EXPORT_METHOD(speechVoices:(RCTResponseSenderBlock)callback)
 // Finished Handler
 -(void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance
 {
-    NSLog(@"Speech finished");
+    // NSLog(@"Speech finished");
+    [self.bridge.eventDispatcher sendDeviceEventWithName:@"speechHasFinished" body:@{@"finished": @true}];
     self.synthesizer = nil;
 }
 
 // Started Handler
 -(void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didStartSpeechUtterance:(AVSpeechUtterance *)utterance
 {
-    NSLog(@"Speech started");
+    // NSLog(@"Speech started");
 }
 
 // Paused Handler
 -(void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didPauseSpeechUtterance:(AVSpeechUtterance *)utterance
 {
-    NSLog(@"Speech paused");
+    // NSLog(@"Speech paused");
 }
 
 // Resumed Handler
 -(void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didContinueSpeechUtterance:(AVSpeechUtterance *)utterance
 {
-    NSLog(@"Speech resumed");
+    // NSLog(@"Speech resumed");
 }
 
 // Word Handler
 -(void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer willSpeakRangeOfSpeechString:(NSRange)characterRange utterance:(AVSpeechUtterance *)utterance
 {
-    NSLog(@"Started word");
+    // NSLog(@"Started word");
 }
 
 // Cancelled Handler
 -(void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didCancelSpeechUtterance:(AVSpeechUtterance *)utterance
 {
-    NSLog(@"Speech cancelled");
+    // NSLog(@"Speech cancelled");
 }
 
 @end

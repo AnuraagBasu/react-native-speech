@@ -7,10 +7,12 @@
 var React = require('react-native');
 var { NativeModules } = React;
 var NativeSpeechSynthesizer = NativeModules.SpeechSynthesizer;
+var DeviceEventEmitter = React.DeviceEventEmitter;
 
 /**
  * High-level docs for the SpeechSynthesizer iOS API can be written here.
  */
+var listeners = {};
 
 var SpeechSynthesizer = {
   speak(options) {
@@ -23,6 +25,22 @@ var SpeechSynthesizer = {
         resolve(true);
       });
     });
+  },
+
+  addEventListener ( eventName, callback ) {
+    listeners[eventName] = DeviceEventEmitter.addListener(eventName,
+      (body) => {
+        callback(body);
+      });
+  },
+
+  removeEventListener ( eventName ) {
+    if (!listeners[eventName]) {
+      return;
+    }
+
+    listeners[eventName].remove();
+    listeners[eventName] = null; 
   },
 
   stop: NativeSpeechSynthesizer.stopSpeakingAtBoundary,
