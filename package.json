@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/naoufal/react-native-speech.git"
+    "url": "https://github.com/AnuraagBasu/react-native-speech.git"
   },
   "keywords": [
     "react-native",
@@ -21,10 +21,10 @@
     "react-component",
     "react-native-component"
   ],
-  "author": "Naoufal Kadhom <naoufalkadhom@gmail.com> (https://github.com/naoufal)",
+  "author": "Anuraag Basu <anuraag.1988@gmail.com> (https://github.com/anuraagbasu)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/naoufal/react-native-speech/issues"
+    "url": "https://github.com/AnuraagBasu/react-native-speech/issues"
   },
-  "homepage": "https://github.com/naoufal/react-native-speech"
+  "homepage": "https://github.com/AnuraagBasu/react-native-speech"
 }

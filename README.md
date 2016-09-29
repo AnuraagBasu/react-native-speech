@@ -177,6 +177,13 @@ Speech.supportedVoices()
   });
 ```
 
+### addEventListener (eventName, callback)
+
+### removeEventListener (eventName)
+
+## Events
+  - speechHasFinished
+
 ## License
 Copyright (c) 2015, [Naoufal Kadhom](http://naoufal.com)
 
