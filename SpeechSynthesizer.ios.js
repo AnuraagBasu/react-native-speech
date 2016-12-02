@@ -51,16 +51,8 @@ var SpeechSynthesizer = {
 
   isPaused() {
     return new Promise(function(resolve, reject) {
-      NativeSpeechSynthesizer.paused(function(error, paused) {
-        if (error) {
-          return reject(error);
-        }
-
-        if (paused === 1) {
-          resolve(true);
-        } else {
-          resolve(false);
-        }
+      NativeSpeechSynthesizer.paused(function(paused) {
+        resolve( paused );
       });
     });
   },
